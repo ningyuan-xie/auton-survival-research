@@ -1,0 +1,34 @@
+name: autosurv
+channels:
+  - pytorch
+  - conda-forge
+  - nodefaults
+
+dependencies:
+  # --- Core Python runtime ---
+  - python=3.10
+  - pip
+  - ipykernel
+
+  # --- Numerics & data ---
+  - numpy=1.26.4
+  - scipy
+  - pandas
+  # Note: Using sklearn 1.0.x for compatibility with scikit-survival 0.17.2
+  - scikit-learn=1.0.2
+
+  # --- Survival analysis (metrics & classical baselines) ---
+  # Note: Using 0.17.x for compatibility with auton-survival (needs event_times_ attribute)
+  - scikit-survival=0.17.2
+  - lifelines
+
+  # --- PyTorch stack ---
+  - pytorch
+  - torchvision
+  - torchaudio
+
+  # --- Plotting & utilities ---
+  - matplotlib
+  - seaborn
+  - tqdm
+  - requests

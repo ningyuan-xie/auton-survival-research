@@ -1,0 +1,41 @@
+# OS
+*.DS_Store
+*.db
+*.ini
+$RECYCLE.BIN/
+
+# IDE
+.idea/
+.ipynb_checkpoints/
+.metadata/
+.vscode/
+
+# Virtual Environment
+venv/
+env/
+ENV/
+*.env
+
+# Files
+*.doc
+*.docx
+*.xls
+*.xlsx
+*.csv
+*.txt
+*.ppt
+*.pptx
+*.mp4
+*.html
+*.json
+*.zip
+*.eml
+
+# LaTeX
+*.gz
+*.synctex.gz
+*.tex
+*.pdf
+*.bib
+*.bst
+*.sty
