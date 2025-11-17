@@ -95,11 +95,6 @@ tqdm==4.66.5
 
    The `autosurv.yml` file includes all necessary dependencies including the auton-survival package.
 
-3. **Verify installation:**
-   ```bash
-   python -c "import auton_survival; print('Installation successful!')"
-   ```
-
 ---
 
 ## 4. Running the Reproduction
