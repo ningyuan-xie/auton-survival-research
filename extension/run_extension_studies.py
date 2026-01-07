@@ -16,11 +16,11 @@ from pathlib import Path
 def run_extension_script(script_name: str, description: str) -> bool:
     """
     Run an extension study script and report results.
-    
+
     Args:
         script_name: Name of the Python script to run
         description: Human-readable description of the extension study
-        
+
     Returns:
         True if successful, False otherwise
     """
@@ -28,9 +28,9 @@ def run_extension_script(script_name: str, description: str) -> bool:
     print(f"Running: {description}")
     print(f"Script: {script_name}")
     print(f"{'#'*80}\n")
-    
+
     start_time = time.time()
-    
+
     try:
         # Run the script
         result = subprocess.run(
@@ -40,17 +40,17 @@ def run_extension_script(script_name: str, description: str) -> bool:
             text=True,
             check=True
         )
-        
+
         elapsed = time.time() - start_time
         print(f"\n✓ {description} completed successfully in {elapsed:.1f}s")
         return True
-        
+
     except subprocess.CalledProcessError as e:
         elapsed = time.time() - start_time
         print(f"\n✗ {description} failed after {elapsed:.1f}s")
         print(f"Error: {e}")
         return False
-    
+
     except Exception as e:
         elapsed = time.time() - start_time
         print(f"\n✗ {description} encountered an error after {elapsed:.1f}s")
@@ -67,9 +67,9 @@ def main():
     print("\nThis script runs three extension studies to validate the original paper's")
     print("hypotheses about mixture-based models, architecture depth, and generalization.")
     print(f"\n{'='*80}\n")
-    
+
     total_start = time.time()
-    
+
     # Define extension studies
     extension_studies = [
         {
@@ -85,34 +85,34 @@ def main():
             'description': 'Extension Study 3: Cross-Dataset Validation'
         }
     ]
-    
+
     # Run all extension studies
     results = {}
     for study in extension_studies:
         success = run_extension_script(study['script'], study['description'])
         results[study['description']] = success
-    
+
     # Report summary
     total_elapsed = time.time() - total_start
-    
+
     print(f"\n{'='*80}")
     print("EXTENSION STUDIES SUMMARY")
     print(f"{'='*80}")
-    
+
     print(f"\nTotal runtime: {total_elapsed:.1f}s ({total_elapsed/60:.1f} minutes)")
-    
+
     print("\n--- Results ---")
     for description, success in results.items():
         status = "✓ SUCCESS" if success else "✗ FAILED"
         print(f"  {status}: {description}")
-    
+
     # Count successes
     n_success = sum(results.values())
     n_total = len(results)
-    
+
     print(f"\n--- Overall ---")
     print(f"  Completed: {n_success} / {n_total} extension studies")
-    
+
     if n_success == n_total:
         print("\n✓ All extension studies completed successfully!")
         print("  Results validate the original paper's hypotheses about:")

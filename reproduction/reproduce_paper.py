@@ -47,7 +47,7 @@ def main():
     """Execute systematic reproduction of all paper experiments."""
     print("Reproducing experiments from the paper")
     print("=" * 60)
-    
+
     # Reproductions arranged in the order they appear in the paper
     reproductions = [
         # Section 1: Time-to-event or Survival Regression
@@ -57,7 +57,7 @@ def main():
         reproduce_importance_weighting,            # 1.2 Importance Weighting
         reproduce_counterfactual_survival_regression,  # 1.3 Counterfactual Survival Regression
         reproduce_time_varying_survival_regression,    # 1.4 Time-Varying Survival Regression
-        
+
         # Section 2: Phenotyping Survival Data
         reproduce_phenotyping_intersectional,      # 2.1 Intersectional Phenotyping
         reproduce_phenotyping_unsupervised,        # 2.2 Unsupervised Phenotyping
@@ -65,26 +65,26 @@ def main():
         reproduce_phenotype_purity,                # 2.3 Supervised Phenotyping (Quantitative Evaluation)
         reproduce_virtual_twins_survival,          # 2.4 Counterfactual Phenotyping (Virtual Twins)
         reproduce_counterfactual_phenotyping_cmhe, # 2.4 Counterfactual Phenotyping (CMHE)
-        
+
         # Section 3: Evaluation
         reproduce_metrics_evaluation,              # 3.1 Censoring-Adjusted Evaluation Metrics
         reproduce_treatment_effect_rmst,           # 3.2 Comparing Treatment Arms (RMST)
         reproduce_treatment_effect_propensity_adjusted,  # 3.3 Propensity Adjusted Treatment Effects
     ]
-    
+
     passed = 0
     failed = 0
-    
+
     for reproduction in reproductions:
         if reproduction():
             passed += 1
         else:
             failed += 1
-    
+
     # Print reproduction summary
     print("\n" + "=" * 60)
     print(f"[SUMMARY] Reproduction Results: {passed} successful, {failed} failed")
-    
+
     if failed == 0:
         print("[SUCCESS] All paper methods successfully reproduced!")
         print("\n" + "=" * 60)
